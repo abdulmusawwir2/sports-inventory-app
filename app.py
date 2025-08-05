@@ -1,14 +1,18 @@
 import streamlit as st
 import mysql.connector
 from datetime import datetime
+from dotenv import load_dotenv
+import os
+load_dotenv()
 
 # Database Configuration
 db_config = {
-    'host': st.secrets["db"]["host"],
-    'user': st.secrets["db"]["user"],
-    'password': st.secrets["db"]["password"],
-    'database': st.secrets["db"]["database"],
+    'host': os.environ.get("DB_HOST"),
+    'user': os.environ.get("DB_USER"),
+    'password': os.environ.get("DB_PASSWORD"),
+    'database': os.environ.get("DB_NAME"),
 }
+
 
 def connect_db():
     try:
